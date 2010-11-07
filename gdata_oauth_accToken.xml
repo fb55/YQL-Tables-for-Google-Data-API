@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>Felix Boehm</author>
+	</meta>
+	<bindings>
+		<select itemPath="" produces="JSON">
+			<inputs>
+                <key id="reqURL" type="xs:string" paramType="variable" default="https://www.google.com/accounts/OAuthGetRequestToken"/>
+                <key id="method" type="xs:string" paramType="variable" default="GET"/>
+                <key id="consumer_secret" type="xs:string" paramType="variable" default="anonymous"/>
+                <key id="token_secret" type="xs:string" paramType="variable" default=""/>
+                <key id="consumer" type="xs:string" paramType="variable" default="anonymous"/>
+                <key id="verifier" type="xs:string" paramType="variable" required="true"/>
+                <key id="token" type="xs:string" paramType="variable" required="true"/>
+			</inputs>
+			<execute><![CDATA[
+var queryBodyParams = [];
+
+var headParams = [["oauth_consumer_key", consumer]
+				["oauth_token", token],
+				["oauth_verifier", verifier]];
+
+y.include("https://github.com/FB55/YQL-Tables-for-Google-Data-API/raw/master/gdata_oauth_utils.js");
+
+var req = buildRequest([], headParams, method, reqURL, consumer_secret, token_secret);
+
+response.object = req.get().response;
+
+     ]]></execute>
+		</select>
+	</bindings>
+</table>
