@@ -34,10 +34,12 @@ function buildRequest(queryBodyParams, headParams, method, reqURL, consumer_secr
         var rets = [];
         var ans = pars.length;
         for (var i = 0; i < ans; i++) {
-            if (pars[i].length < 2) {
+            if (pars[i] && (typeof pars[i] === "object") && (pars[i].length < 2)) {
                 continue;
             }
-            rets.push(pars[i][0] + "=" + encodeURIComponent(pars[i][1]));
+            try{
+            	rets.push(pars[i][0] + "=" + encodeURIComponent(pars[i][1]));
+            } catch(e){}
         }
         return encodeURIComponent( rets.join("&") );
     })();
