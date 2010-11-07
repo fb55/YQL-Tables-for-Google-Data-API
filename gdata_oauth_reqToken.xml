@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>Felix Boehm</author>
+	</meta>
+	<bindings>
+		<select itemPath="" produces="JSON">
+			<inputs>
+				<key id="callback" type="xs:string" paramType="variable" default="http://touchbite.net/author/fb55"/>
+                <key id="scope" type="xs:string" paramType="variable" default="http://www.google.com/reader/api/"/>
+                <key id="reqURL" type="xs:string" paramType="variable" default="https://www.google.com/accounts/OAuthGetRequestToken"/>
+                <key id="method" type="xs:string" paramType="variable" default="GET"/>
+                <key id="consumer_secret" type="xs:string" paramType="variable" default="anonymous"/>
+                <key id="token_secret" type="xs:string" paramType="variable" default=""/>
+                <key id="consumer" type="xs:string" paramType="variable" default="anonymous"/>
+			</inputs>
+			<execute><![CDATA[
+
+var queryBodyParams = [
+        ["scope", scope]
+];
+
+var headParams = [["oauth_callback", callback],
+			 ["oauth_consumer_key", consumer]];
+
+y.include("http://dl.dropbox.com/u/2242871/Webcontent/BiteReader/YQL-Tables/gdata_oauth_utils.js");
+
+var req = buildRequest(queryBodyParams, headParams, method, reqURL, consumer_secret, token_secret);
+
+response.object = req.get().response;
+
+     ]]></execute>
+		</select>
+	</bindings>
+</table>
