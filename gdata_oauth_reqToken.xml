@@ -23,7 +23,7 @@ var queryBodyParams = [
 var headParams = [["oauth_callback", callback],
 			 ["oauth_consumer_key", consumer]];
 
-y.include("http://dl.dropbox.com/u/2242871/Webcontent/BiteReader/YQL-Tables/gdata_oauth_utils.js");
+y.include("https://github.com/FB55/YQL-Tables-for-Google-Data-API/raw/master/gdata_oauth_utils.js");
 
 var req = buildRequest(queryBodyParams, headParams, method, reqURL, consumer_secret, token_secret);
 
