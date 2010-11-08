@@ -6,7 +6,7 @@
 	<bindings>
 		<select itemPath="" produces="JSON">
 			<inputs>
-				<key id="callback" type="xs:string" paramType="variable" default="http://touchbite.net/author/fb55"/>
+				<key id="cbURL" type="xs:string" paramType="variable" default="http://touchbite.net/author/fb55"/>
                 <key id="scope" type="xs:string" paramType="variable" default="http://www.google.com/reader/api/"/>
                 <key id="reqURL" type="xs:string" paramType="variable" default="https://www.google.com/accounts/OAuthGetRequestToken"/>
                 <key id="method" type="xs:string" paramType="variable" default="GET"/>
@@ -20,7 +20,7 @@ var queryBodyParams = [
         ["scope", scope]
 ];
 
-var headParams = [["oauth_callback", callback],
+var headParams = [["oauth_callback", cbURL],
 			 ["oauth_consumer_key", consumer]];
 
 y.include("https://github.com/FB55/YQL-Tables-for-Google-Data-API/raw/master/gdata_oauth_utils.js");

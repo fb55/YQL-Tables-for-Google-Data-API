@@ -52,6 +52,7 @@ function buildRequest(queryBodyParams, headParams, method, reqURL, consumer_secr
         var pars = [];
         var ans = headParams.length;
         for (var i = 0; i < ans; i++) {
+        	
             pars[i] = headParams[i][0] + "=\"" + encodeURIComponent(headParams[i][1]) + "\"";
         }
         return pars.join(", ");
